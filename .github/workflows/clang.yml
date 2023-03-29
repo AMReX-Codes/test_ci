@@ -7,7 +7,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  src_a:
+  clang_src_a:
     name: clang src_a
     runs-on: ubuntu-latest
     steps:
@@ -36,7 +36,7 @@ jobs:
 
         ccache -s
 
-  src_b:
+  clang_src_b:
     name: clang src_b
     runs-on: ubuntu-latest
     steps:

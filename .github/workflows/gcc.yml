@@ -7,7 +7,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  src_a:
+  gcc_src_a:
     name: gcc src_a
     runs-on: ubuntu-latest
     steps:
@@ -36,7 +36,7 @@ jobs:
 
         ccache -s
 
-  src_b:
+  gcc_src_b:
     name: gcc src_b
     runs-on: ubuntu-latest
     steps:
