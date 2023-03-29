@@ -1,0 +1,66 @@
+name: Gcc
+
+on: [push, pull_request]
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.head_ref }}-linux-gcc
+  cancel-in-progress: true
+
+jobs:
+  src_a:
+    name: gcc src_a
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Dependencies
+      run: |
+        .github/workflows/dependencies/dependencies_gcc.sh 12
+        .github/workflows/dependencies/dependencies_ccache.sh
+    - name: Set Up Cache
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache
+        key: ccache-${{ github.workflow }}-${{ github.job }}-git-${{ github.sha }}
+        restore-keys: |
+             ccache-${{ github.workflow }}-${{ github.job }}-git-
+    - name: Build
+      run: |
+        export CCACHE_COMPRESS=1
+        export CCACHE_COMPRESSLEVEL=10
+        export CCACHE_MAXSIZE=125M
+        ccache -z
+
+        cd src_a
+        ccache g++ main.cpp
+        ./a.out
+
+        ccache -s
+
+  src_b:
+    name: gcc src_b
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Dependencies
+      run: |
+        .github/workflows/dependencies/dependencies_gcc.sh 12
+        .github/workflows/dependencies/dependencies_ccache.sh
+    - name: Set Up Cache
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache
+        key: ccache-${{ github.workflow }}-${{ github.job }}-git-${{ github.sha }}
+        restore-keys: |
+             ccache-${{ github.workflow }}-${{ github.job }}-git-
+    - name: Build
+      run: |
+        export CCACHE_COMPRESS=1
+        export CCACHE_COMPRESSLEVEL=10
+        export CCACHE_MAXSIZE=125M
+        ccache -z
+
+        cd src_b
+        ccache g++ main.cpp
+        ./a.out
+
+        ccache -s
