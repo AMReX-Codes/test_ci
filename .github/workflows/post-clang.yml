@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   CleanUpCache:
-    name: Clean Up Cache for ${{ github.event.workflow_run.name }} ${{ github.event.workflow_run.workflow.name }}
+    name: Clean Up Cache for ???
     runs-on: ubuntu-latest
     permissions:
       actions: write
@@ -25,5 +25,6 @@ jobs:
         run: |
           echo 'aaa'
           echo 'bbb'
+          # ${{ github.event.workflow_run.name }} ${{ github.event.workflow_run.workflow.name }}
 
           gh extension install actions/gh-actions-cache
