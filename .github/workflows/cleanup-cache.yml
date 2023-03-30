@@ -31,6 +31,8 @@ jobs:
           # github.ref
           echo 'github.ref=${{ github.ref }}'
 
+          echo "gh run download ${{ github.event.workflow_run.id }} -n pr_number"
           gh run download ${{ github.event.workflow_run.id }} -n pr_number
+          ls -R
           pr_number=`cat pr_number.txt`
           echo The PR number is $pr_number
