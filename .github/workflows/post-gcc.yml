@@ -1,8 +1,8 @@
-name: PostClang
+name: PostGCC
 
 on:
   workflow_run:
-    workflows: [Clang]
+    workflows: [Gcc]
     types:
       - completed
 
