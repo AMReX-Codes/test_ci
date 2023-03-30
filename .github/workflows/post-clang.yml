@@ -8,7 +8,7 @@ on:
 
 jobs:
   CleanUpCache:
-    name: Clena Up Cache for ${{ github.event.workflow_run.name }} ${{ github.event.workflow_run.workflow.name }}
+    name: Clean Up Cache for ${{ github.event.workflow_run.name }} ${{ github.event.workflow_run.workflow.name }}
     runs-on: ubuntu-latest
     permissions:
       actions: write
@@ -16,6 +16,10 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - run: |
-        echo 'aaa'
-        echo 'bbb'
+      - uses: actions/checkout@v3
+      -name: Clean up ccahe
+       run: |
+         echo 'aaa'
+         echo 'bbb'
+
+         gh extension install actions/gh-actions-cache
