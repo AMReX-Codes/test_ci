@@ -6,33 +6,6 @@ on:
     types:
       - completed
 
-concurrency:
-  group: ${{ github.ref }}-${{ github.head_ref }}-${{ github.workflow }}
-  cancel-in-progress: true
-
 jobs:
   CleanUpCache:
-    name: Clean Up Cache for ${{ github.event.workflow_run.name }}
-    runs-on: ubuntu-latest
-    permissions:
-      actions: write
-      contents: read
-    env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    steps:
-      - uses: actions/checkout@v3
-      - name: Clean up ccahe
-        run: |
-          echo 'aaa'
-          echo 'bbb'
-
-          echo '${{ toJSON(github.event.workflow_run) }}'
-
-          # event
-          echo '${{ github.event.workflow_run.event }}'
-
-          # triggering workflow name
-          echo '${{ github.event.workflow_run.name }}'
-
-          # PR number
-          echo '${{ github.event.workflow_run.number }}'
+    uses: ./.github/workflows/cleanup-cache.yml
