@@ -26,6 +26,6 @@ jobs:
           echo 'aaa'
           echo 'bbb'
 
-          echo '${{ toJSON(github.event.workflow_run }}'
+          echo '${{ toJSON(github.event.workflow_run) }}'
 
           gh extension install actions/gh-actions-cache
