@@ -27,3 +27,14 @@ jobs:
           # triggering workflow name
           echo '${{ github.event.workflow_run.name }}'
 
+          # github.ref
+          echo 'yyy${{ github.ref }}yyy'
+
+          # github.head_ref
+          echo 'zzz${{ github.head_ref }}zzz'
+
+          # github.ref
+          echo 'iii${{ github.event.workflow_run.ref }}iii'
+
+          # github.head_ref
+          echo 'jjj${{ github.event.workflow_run.head_ref }}jjj'
