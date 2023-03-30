@@ -1,14 +1,11 @@
-name: PostClang
+name: CleanUpCache
+on: [workflow_call]
 
-on:
-  workflow_run:
-    workflows: [Clang]
-    types:
-      - completed
+# check this github_token
 
 jobs:
-  CleanUpCache:
-    name: Clean Up Cache for ${{ github.event.workflow_run.name }}
+  Clean-Up-Cache:
+    name: Clean Up Cache
     runs-on: ubuntu-latest
     permissions:
       actions: write
