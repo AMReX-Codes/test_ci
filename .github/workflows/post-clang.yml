@@ -6,6 +6,10 @@ on:
     types:
       - completed
 
+concurrency:
+  group: ${{ github.ref }}-${{ github.head_ref }}-post-linux-clang
+  cancel-in-progress: true
+
 jobs:
   CleanUpCache:
     name: Clean Up Cache for ${{ github.event.workflow_run.name }} ${{ github.event.workflow_run.workflow.name }}
@@ -17,9 +21,9 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v3
-      -name: Clean up ccahe
-       run: |
-         echo 'aaa'
-         echo 'bbb'
+      - name: Clean up ccahe
+        run: |
+          echo 'aaa'
+          echo 'bbb'
 
-         gh extension install actions/gh-actions-cache
+          gh extension install actions/gh-actions-cache
