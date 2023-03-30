@@ -1,0 +1,30 @@
+name: PostClangWorkflow
+
+on:
+  workflow_run:
+    workflows: [Clang, clang_src_a, clang_src_b]
+    types:
+      - completed
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.head_ref }}-post-linux-clang
+  cancel-in-progress: true
+
+jobs:
+  CleanUpCache:
+    name: Clean Up Cache for ???
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: read
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Clean up ccahe
+        run: |
+          echo 'aaa'
+          echo 'bbb'
+          # ${{ github.event.workflow_run.name }} ${{ github.event.workflow_run.workflow.name }}
+
+          gh extension install actions/gh-actions-cache
