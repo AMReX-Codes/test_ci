@@ -27,14 +27,3 @@ jobs:
           # triggering workflow name
           echo '${{ github.event.workflow_run.name }}'
 
-          # PR number
-          echo 'xxx${{ github.event.workflow_run.number }}xxx'
-
-          # repo pulls_url
-          echo 'xxx${{ github.event.workflow_run.repository.pulls_url }}xxx'
-
-          # github.ref
-          echo '${{ github.ref }}'
-
-          # github.head_ref
-          echo '${{ github.head_ref }}'
