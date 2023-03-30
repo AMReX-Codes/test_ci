@@ -8,7 +8,7 @@ concurrency:
 
 jobs:
   clang_src_a:
-    name: clang src_a
+    name: clang_src_a
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -37,7 +37,7 @@ jobs:
         ccache -s
 
   clang_src_b:
-    name: clang src_b
+    name: clang_src_b
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
