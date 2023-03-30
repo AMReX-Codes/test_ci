@@ -1,8 +1,8 @@
-name: PostClang
+name: PostGCC
 
 on:
   workflow_run:
-    workflows: [Clang]
+    workflows: [Gcc]
     types:
       - completed
 
@@ -36,4 +36,3 @@ jobs:
 
           # PR number
           echo '${{ github.event.workflow_run.number }}'
-
