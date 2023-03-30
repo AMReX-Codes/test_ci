@@ -21,14 +21,13 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: pr
       - name: Clean up ccahe
         run: |
-          echo 'aaa'
-          echo 'bbb'
+          ls -R
 
-          echo '${{ toJSON(github.event.workflow_run) }}'
-
-          # event
           echo '${{ github.event.workflow_run.event }}'
 
           # triggering workflow name
