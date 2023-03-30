@@ -38,3 +38,6 @@ jobs:
 
           # github.ref
           echo '${{ github.ref }}'
+
+          # github.head_ref
+          echo '${{ github.head_ref }}'
