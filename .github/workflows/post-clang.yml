@@ -28,7 +28,12 @@ jobs:
 
           echo '${{ toJSON(github.event.workflow_run) }}'
 
-          # triggering workflow name
-          echo `${{ github.event.workflow_run.name }}
+          # event
+          echo '${{ github.event.workflow_run.event }}'
 
-          #
+          # triggering workflow name
+          echo '${{ github.event.workflow_run.name }}'
+
+          # PR number
+          echo '${{ github.event.workflow_run.number }}'
+
