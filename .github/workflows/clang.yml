@@ -66,6 +66,7 @@ jobs:
         ccache -s
 
   save_pr_number:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: Save PR number
