@@ -2,7 +2,7 @@ name: PostClangWorkflow
 
 on:
   workflow_run:
-    workflows: [Clang]
+    workflows: [Clang, clang_src_a, clang_src_b]
     types:
       - completed
 
