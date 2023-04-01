@@ -18,8 +18,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Clean up ccahe
+        env:
+          GITHUB_EVENT: ${{ toJSON(github.event) }}
         run: |
           gh extension install actions/gh-actions-cache
+
+          echo "github.ref = ${{ github.ref }}"
+          echo "github.head_ref = ${{ github.ref }}"
+          echo "github.event:"
+          echo ${GITHUB_EVENT}
 
           REPO=${{ github.repository }}
 
