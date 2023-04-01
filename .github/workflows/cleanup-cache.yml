@@ -28,7 +28,7 @@ jobs:
           echo "github.ref = ${{ github.ref }}"
           echo "github.head_ref = ${{ github.ref }}"
           echo "github.event.workflow:"
-          echo ${{ github.even.workflow_run }}
+          echo ${{ github.event.workflow_run }}
 
           REPO=${{ github.repository }}
 
